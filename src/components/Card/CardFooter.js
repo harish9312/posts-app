@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Likes } from "./likes";
+import { Likes } from "./Likes";
 import { Shares } from "./Share";
 import { Views } from "./Views";
 
