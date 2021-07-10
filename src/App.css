@@ -161,7 +161,10 @@
 }
 
 .sort-input {
+  display: flex;
   margin: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 600px) {

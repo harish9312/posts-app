@@ -140,7 +140,7 @@ const SortOptions = (props) => {
   return (
     <div className="sort-container">
       <div className="sort-input">
-        Sort By:
+        <div style={{ width: "70px" }}>Sort By:</div>
         <select className="sorter" defaultValue="" onChange={props.onChange}>
           <option disabled value="">
             Select
@@ -152,7 +152,7 @@ const SortOptions = (props) => {
         </select>
       </div>
       <div className="sort-input">
-        Type:
+        <div style={{ width: "70px" }}>Type:</div>
         <select className="sorter" onChange={props.onChangeType}>
           <option value="asc">Ascending</option>
           <option value="dsc">Dessding</option>
