@@ -147,3 +147,26 @@
   height: 100%;
   width: 300px;
 }
+
+.sorter {
+  min-width: 200px;
+  padding: 10px 0px;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.sort-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sort-input {
+  margin: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .sort-container {
+    display: block;
+  }
+
+}

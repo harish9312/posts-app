@@ -3,7 +3,6 @@ import React from "react";
 export const Views = (props) => {
   return (
     <svg
-      enable-background="new 0 0 32 32"
       height="24"
       width="24"
       id="svg2"

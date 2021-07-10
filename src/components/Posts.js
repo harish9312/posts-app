@@ -7,11 +7,9 @@ export const Posts = (props) => {
   const { postData } = props;
   return (
     <div className="post-container">
-      <h1 className="page-title">Posts</h1>
-      <hr />
       <div className="row" id="row">
-        {postData.map((x) => (
-          <>
+        {postData.map((x, i) => (
+          <React.Fragment key={i} >
             <Card
               onClick={() => {
                 document.body.style.overflow = "hidden";
@@ -20,7 +18,7 @@ export const Posts = (props) => {
               {...x}
               key={x.id}
             />
-          </>
+          </React.Fragment>
         ))}
       </div>
       <PostDetails
@@ -55,7 +53,7 @@ const PostDetails = (props) => {
         <div className="details-image">
           <Image
             fallback={<Shimmer className="image" width={250} height={250} />}
-            src={thumbnail_image}
+            src={thumbnail_image || ""}
             alt="thumbnail"
           />
         </div>
