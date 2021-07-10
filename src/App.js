@@ -8,25 +8,60 @@ const App = () => {
     isLoading: true,
     hasError: false,
     data: null,
+    page: 1,
   });
   React.useEffect(() => {
-    getData().then((res) => {
-      setPostData({ isLoading: false, hasError: false, data: res });
+    getData("59b3f0b0100000e30b236b7e").then((res) => {
+      setPostData({ isLoading: false, hasError: false, data: res, page: 1 });
     });
   }, []);
 
-  return postData.isLoading ? (
-    <h1>Loading...</h1>
-  ) : (
-    <>
-      <Posts postData={postData.data.data.posts} />
+  const changePage = (id, page) => {
+    setPostData({ isLoading: true, hasError: false, data: [], page });
+
+    getData(id).then((res) => {
+      setPostData({ isLoading: false, hasError: false, data: res, page });
+    });
+  };
+
+  return (
+    <div className="main-container">
+      {postData.isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Posts postData={postData.data.data.posts} />
+      )}
       <div className="page-number">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
+        {[
+          "59b3f0b0100000e30b236b7e",
+          "59ac28a9100000ce0bf9c236",
+          "59ac293b100000d60bf9c239",
+        ].map((id, i) => (
+          <PageNumber
+            id={id}
+            onChange={changePage}
+            pageNumber={i + 1}
+            postData={postData}
+          />
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
 export default App;
+
+const PageNumber = ({ postData, onChange, pageNumber, id }) => {
+  return (
+    <div
+      style={{
+        color: postData.page === pageNumber ? "white" : "",
+        backgroundColor: postData.page === pageNumber ? "gray" : "",
+      }}
+      onClick={() => onChange(id, pageNumber)}
+      className="page"
+    >
+      {pageNumber}
+    </div>
+  );
+};
