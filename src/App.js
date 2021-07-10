@@ -14,7 +14,6 @@ const App = () => {
   const [sortType, setType] = React.useState({ sortBy: "", type: "asc" });
   React.useEffect(() => {
     getData("59b3f0b0100000e30b236b7e").then((res) => {
-      console.log(">> res", res);
       setPostData({
         isLoading: false,
         hasError: false,
