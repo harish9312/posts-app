@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { getData } from "./appService";
+import { Loader } from "./components/Loader";
 import { Posts } from "./components/Posts";
 
 const App = () => {
@@ -27,24 +28,26 @@ const App = () => {
   return (
     <div className="main-container">
       {postData.isLoading ? (
-        <h1>Loading...</h1>
+        <Loader />
       ) : (
-        <Posts postData={postData.data.data.posts} />
+        <>
+          <Posts postData={postData.data.data.posts} />
+          <div className="page-number">
+            {[
+              "59b3f0b0100000e30b236b7e",
+              "59ac28a9100000ce0bf9c236",
+              "59ac293b100000d60bf9c239",
+            ].map((id, i) => (
+              <PageNumber
+                id={id}
+                onChange={changePage}
+                pageNumber={i + 1}
+                postData={postData}
+              />
+            ))}
+          </div>
+        </>
       )}
-      <div className="page-number">
-        {[
-          "59b3f0b0100000e30b236b7e",
-          "59ac28a9100000ce0bf9c236",
-          "59ac293b100000d60bf9c239",
-        ].map((id, i) => (
-          <PageNumber
-            id={id}
-            onChange={changePage}
-            pageNumber={i + 1}
-            postData={postData}
-          />
-        ))}
-      </div>
     </div>
   );
 };

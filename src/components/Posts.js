@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "./Card";
-import { CardFooter } from "./Card/CardFooter";
+import Image, { Shimmer } from "react-shimmer";
 
 export const Posts = (props) => {
   const [showDetails, setDetails] = React.useState(null);
@@ -25,7 +25,7 @@ export const Posts = (props) => {
       </div>
       <PostDetails
         onBlur={() => {
-          document.body.style.overflow = "scroll";
+          document.body.style.overflowY = "scroll";
           setDetails(null);
         }}
         {...showDetails}
@@ -35,7 +35,7 @@ export const Posts = (props) => {
 };
 
 const PostDetails = (props) => {
-  const { event_name, event_date, onBlur, thumbnail_image, ...rest } = props;
+  const { event_name, event_date, onBlur, thumbnail_image } = props;
   return (
     <div
       style={{
@@ -49,13 +49,14 @@ const PostDetails = (props) => {
       </div>
       <div className="post-details">
         <div className="font-24">Event Name: {event_name}</div>
-        <div className="font-20">Posted On: {new Date().toDateString()}</div>
-        <div>
-          <img
-            width="300px"
-            height="100%"
+        <div className="font-20">
+          Posted On: {new Date(Number(`${event_date}000`)).toDateString()}
+        </div>
+        <div className="details-image">
+          <Image
+            fallback={<Shimmer className="image" width={250} height={250} />}
             src={thumbnail_image}
-            alt="thumbnail_image"
+            alt="thumbnail"
           />
         </div>
       </div>

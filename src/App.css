@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -85,8 +86,6 @@
   background: white;
   text-align: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
-
 }
 
 .font-20 {
@@ -128,4 +127,23 @@
 
 .close:hover {
   cursor: pointer;
+}
+
+.shimmer-card {
+  width: "96px";
+  height: "8px";
+  align-self: "center";
+  margin-left: "16px";
+  border-radius: "8px"
+}
+
+.details-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-image>img {
+  height: 100%;
+  width: 300px;
 }
